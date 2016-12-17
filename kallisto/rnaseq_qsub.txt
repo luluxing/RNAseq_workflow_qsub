@@ -1,0 +1,37 @@
+#!/bin/bash -l
+#PBS -M luluxing1988@gmail.com
+#PBS -m abe
+#PBS -q standby
+#PBS -l naccesspolicy=shared
+#PBS -l nodes=1:ppn=16
+#PBS -l walltime=4:00:00
+#PBS -N rna_zhm
+#PBS -d /usr/20161212
+
+INDEX_FILE=/usr/20161212/index/TAIR10/Arabidopsis_thaliana.TAIR10.26.cdna.all.kallisto.idx
+
+OUT_PRE1559=1559wt
+time kallisto quant -i $INDEX_FILE -o $OUT_PRE1559 -b 100 <(zcat HMZ0025-1559*_R1.fastq.gz) <(zcat HMZ0025-1559*_R2.fastq.gz) 2>> ${OUT_PRE1559}_kallisto_terminal.txt  &
+
+
+OUT_PRE1560=1560wt
+time kallisto quant -i $INDEX_FILE -o $OUT_PRE1560 -b 100 <(zcat HMZ0025-1560*_R1.fastq.gz) <(zcat HMZ0025-1560*_R2.fastq.gz) 2>> ${OUT_PRE1560}_kallisto_terminal.txt  &
+
+
+OUT_PRE1561=1561nrpe1_11
+time kallisto quant -i $INDEX_FILE -o $OUT_PRE1561 -b 100 <(zcat HMZ0025-1561*_R1.fastq.gz) <(zcat HMZ0025-1561*_R2.fastq.gz) 2>> ${OUT_PRE1561}_kallisto_terminal.txt  &
+
+
+OUT_PRE1562=1562nrpe1_11
+time kallisto quant -i $INDEX_FILE -o $OUT_PRE1562 -b 100 <(zcat HMZ0025-1562*_R1.fastq.gz) <(zcat HMZ0025-1562*_R2.fastq.gz) 2>> ${OUT_PRE1562}_kallisto_terminal.txt  &
+
+
+OUT_PRE1563=1563nrpd1_3
+time kallisto quant -i $INDEX_FILE -o $OUT_PRE1563 -b 100 <(zcat HMZ0025-1563*_R1.fastq.gz) <(zcat HMZ0025-1563*_R2.fastq.gz) 2>> ${OUT_PRE1563}_kallisto_terminal.txt  &
+
+
+OUT_PRE1564=1564nrpd1_3
+time kallisto quant -i $INDEX_FILE -o $OUT_PRE1564 -b 100 <(zcat HMZ0025-1564*_R1.fastq.gz) <(zcat HMZ0025-1564*_R2.fastq.gz) 2>> ${OUT_PRE1564}_kallisto_terminal.txt  &
+
+
+wait
